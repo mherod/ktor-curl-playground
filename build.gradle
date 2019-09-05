@@ -1,0 +1,64 @@
+plugins {
+    id 'org.jetbrains.kotlin.multiplatform' version '1.3.50'
+}
+
+ext {
+    kotlin_version = "1.3.50"
+    ktor_version = "1.2.4"
+    coroutines_version = "1.3.1"
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven { url "https://dl.bintray.com/kotlin/kotlinx" }
+    maven { url = uri("https://kotlin.bintray.com/ktor") }
+}
+
+kotlin {
+    targets {
+        fromPreset(presets.jvm, 'jvm')
+        fromPreset(presets.macosX64, 'macos')
+    }
+    macosX64("macos") {
+        binaries {
+            executable {
+                entryPoint = 'sample.main'
+                runTask?.args('')
+            }
+        }
+    }
+    sourceSets {
+        commonMain {
+        }
+        commonTest {
+        }
+        jvmMain {
+        }
+        jvmTest {
+        }
+        macosMain {
+        }
+        macosTest {
+        }
+    }
+}
+
+dependencies {
+    commonMainImplementation "org.jetbrains.kotlin:kotlin-stdlib-common:$kotlin_version"
+    jvmMainImplementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
+    commonMainImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+    macosMainApi "org.jetbrains.kotlinx:kotlinx-coroutines-core-native:$coroutines_version"
+
+    commonMainImplementation "io.ktor:ktor-client-core:$ktor_version"
+    jvmMainImplementation "io.ktor:ktor-client-core-jvm:$ktor_version"
+    macosMainApi "io.ktor:ktor-client-core-native:$ktor_version"
+
+    macosMainApi "io.ktor:ktor-client-curl:$ktor_version"
+
+    commonTestImplementation "org.jetbrains.kotlin:kotlin-test-common:$kotlin_version"
+    jvmTestImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+
+    commonTestImplementation "org.jetbrains.kotlin:kotlin-annotations-common:$kotlin_version"
+}

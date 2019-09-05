@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ktor-curl-playground-jvm">
+    <output-path>$PROJECT_DIR$/build/libs</output-path>
+    <root id="archive" name="ktor-curl-playground-jvm.jar">
+      <element id="module-output" name="ktor-curl-playground.jvmMain" />
+    </root>
+  </artifact>
+</component>
