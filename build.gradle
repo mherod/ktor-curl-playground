@@ -60,5 +60,5 @@ dependencies {
     commonTestImplementation "org.jetbrains.kotlin:kotlin-test-common:$kotlin_version"
     jvmTestImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
 
-    commonTestImplementation "org.jetbrains.kotlin:kotlin-annotations-common:$kotlin_version"
+//    commonTestImplementation "org.jetbrains.kotlin:kotlin-annotations-common:$kotlin_version"
 }
